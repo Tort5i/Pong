@@ -1,8 +1,8 @@
 ﻿  Main.cpp
 C:\Users\Middl\source\repos\Pong\Pong\Main.cpp(34,33): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 C:\Users\Middl\source\repos\Pong\Pong\Main.cpp(35,34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Middl\source\repos\Pong\Pong\Main.cpp(38,31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Middl\source\repos\Pong\Pong\Main.cpp(39,31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Middl\source\repos\Pong\Pong\Main.cpp(38,25): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Middl\source\repos\Pong\Pong\Main.cpp(39,25): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 C:\Users\Middl\source\repos\Pong\Pong\Main.cpp(46,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\Middl\source\repos\Pong\Pong\Main.cpp(46,42): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\Middl\source\repos\Pong\Pong\Main.cpp(46,25): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
@@ -11,8 +11,8 @@ C:\Users\Middl\source\repos\Pong\Pong\Main.cpp(47,34): warning C4244: 'argument'
 C:\Users\Middl\source\repos\Pong\Pong\Main.cpp(47,22): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\Middl\source\repos\Pong\Pong\Main.cpp(74,33): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 C:\Users\Middl\source\repos\Pong\Pong\Main.cpp(75,34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Middl\source\repos\Pong\Pong\Main.cpp(79,31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Middl\source\repos\Pong\Pong\Main.cpp(80,31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Middl\source\repos\Pong\Pong\Main.cpp(79,25): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Middl\source\repos\Pong\Pong\Main.cpp(80,25): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 C:\Users\Middl\source\repos\Pong\Pong\Main.cpp(140,84): warning C4305: 'argument': truncation from 'double' to 'float'
 C:\Users\Middl\source\repos\Pong\Pong\Main.cpp(141,29): warning C4305: 'argument': truncation from 'double' to 'float'
 C:\Users\Middl\source\repos\Pong\Pong\Main.cpp(159,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
@@ -42,7 +42,7 @@ C:\Users\Middl\source\repos\Pong\Pong\Main.cpp(312,33): warning C4244: 'argument
 C:\Users\Middl\source\repos\Pong\Pong\Main.cpp(314,66): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\Middl\source\repos\Pong\Pong\Main.cpp(318,71): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Generating code
-  1 of 110 functions ( 0.9%) were compiled, the rest were copied from previous compilation.
+  5 of 110 functions ( 4.5%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code

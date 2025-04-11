@@ -34,9 +34,9 @@ public:
 		position.x = GetScreenWidth() / 2;
 		position.y = GetScreenHeight() / 2;
 		
-		int randNum = rand() % 2;
-		speedX = startVel[randNum][0];
-		speedY = startVel[randNum][1];
+		int randNum = rand() % 1;
+		speedX = startVel[0][0];
+		speedY = startVel[0][1];
 
 		radius = newRad;
 	}
@@ -76,8 +76,8 @@ public:
 		
 		int randNum = rand() & 2;
 
-		speedX = startVel[randNum][0];
-		speedY = startVel[randNum][1];
+		speedX = startVel[0][0];
+		speedY = startVel[0][1];
 	}
 
 	void InvertSpeed()
