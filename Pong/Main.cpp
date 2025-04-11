@@ -9,7 +9,12 @@ Color lightGreen = Color{ 129, 204, 184, 255 };
 Color yellow = Color{ 243, 213, 91, 255 };
 Color shadow = Color{ 42, 42, 42, 100 };
 
-
+enum GameState
+{
+	STATE_MENU,
+	STATE_GAME,
+	STATE_PAUSE,
+};
 
 class Ball
 {
@@ -181,6 +186,51 @@ public:
 	}
 };
 
+class Button
+{
+	Vector2 position;
+	Vector2 proportions;
+	std::string text;
+	Color regColour, hoverColour;
+	bool isHovered;
+
+public:
+	Button(Vector2 pos, Vector2 size, std::string butText, Color normCol, Color hovCol)
+	{
+		position = pos;
+		proportions = size;
+		text = butText;
+		regColour = normCol;
+		hoverColour = hovCol;
+		isHovered = false;
+	}
+
+	void Draw()
+	{
+		(isHovered) ? DrawRectangle(position.x, position.y, proportions.x, proportions.y, regColour) : DrawRectangle(position.x, position.y, proportions.x, proportions.y, hoverColour);
+		DrawText(text.c_str(), position.x + proportions.x / 2 - MeasureText(text.c_str(), 75) / 2, position.y + proportions.y / 2 - 75 / 2, 75, WHITE);
+	}
+
+	void Update()
+	{
+		Vector2 mousePos = GetMousePosition();
+
+		if (CheckCollisionPointRec(mousePos, Rectangle{ position.x, position.y, proportions.x, proportions.y }))
+		{
+			isHovered = true;
+		}
+		else
+		{
+			isHovered = false;
+		}
+	}
+
+	bool isMouseHovered()
+	{
+		return isHovered;
+	}
+};
+
 int main(int argc, char* argv[])
 {
 	const unsigned int screenWidth = 1280, screenHeight = 800;
@@ -188,6 +238,12 @@ int main(int argc, char* argv[])
 	InitWindow(screenWidth, screenHeight, "Pong");
 	SetTargetFPS(60);
 	srand(time(0));
+	SetExitKey(KEY_NULL);
+
+	GameState state = STATE_MENU;
+
+	Button playButton = Button(Vector2{ screenWidth / 2 - 300 / 2, screenHeight / 2 - 125 / 2 }, Vector2{ 300, 125 }, "PLAY!", green, lightGreen);
+	Button quitButton = Button(Vector2{ screenWidth / 2 - 300 / 2, screenHeight / 2 - 125 / 2 + 150 }, Vector2{ 300, 125 }, "quit", green, lightGreen);
 
 	Ball ball = Ball(20);
 	Paddle player = Paddle(10, screenHeight / 2 - 60);
@@ -195,31 +251,72 @@ int main(int argc, char* argv[])
 
 	while (!WindowShouldClose())
 	{
-		ball.Update();
-		player.Update();
-		cpu.Update(ball.GetPosition().y);
-
-		if (CheckCollisionCircleRec(ball.GetPosition(), ball.GetRadius(), Rectangle{ player.GetPosition().x, player.GetPosition().y, player.GetProportions().x, player.GetProportions().y }))
+		if (state == STATE_MENU)
 		{
-			ball.InvertSpeedX();
+			playButton.Update();
+			if (playButton.isMouseHovered() && IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+			{
+				state = STATE_GAME;
+			}
+			quitButton.Update();
+			if (quitButton.isMouseHovered() && IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+			{
+				break;
+			}
 		}
-		else if (CheckCollisionCircleRec(ball.GetPosition(), ball.GetRadius(), Rectangle{ cpu.GetPosition().x, cpu.GetPosition().y, cpu.GetProportions().x, cpu.GetProportions().y }))
+		
+		else if (state == STATE_GAME)
 		{
-			ball.InvertSpeedX();
+			ball.Update();
+			player.Update();
+			cpu.Update(ball.GetPosition().y);
+
+			if (CheckCollisionCircleRec(ball.GetPosition(), ball.GetRadius(), Rectangle{ player.GetPosition().x, player.GetPosition().y, player.GetProportions().x, player.GetProportions().y }))
+			{
+				ball.InvertSpeedX();
+			}
+			else if (CheckCollisionCircleRec(ball.GetPosition(), ball.GetRadius(), Rectangle{ cpu.GetPosition().x, cpu.GetPosition().y, cpu.GetProportions().x, cpu.GetProportions().y }))
+			{
+				ball.InvertSpeedX();
+			}
 		}
 		
 		BeginDrawing();
 
 		ClearBackground(darkGreen);
 
-		DrawRectangle(screenWidth / 2, 0, screenWidth / 2, screenHeight, green);
-		DrawCircle(screenWidth / 2, screenHeight / 2, 150, lightGreen);
-		DrawLine(screenWidth / 2, 0, screenWidth / 2, screenHeight, WHITE);
-		DrawText(TextFormat("%i", cpuScore), screenWidth / 2 + 10, screenHeight / 2 - 40, 80, WHITE);
-		DrawText(TextFormat("%i", playerScore), screenWidth / 2 - 50, screenHeight / 2 - 40, 80, WHITE);
-		ball.Draw();
-		player.Draw();
-		cpu.Draw();
+		if (state == STATE_MENU)
+		{
+			//DrawLine(0, screenHeight / 2, screenWidth, screenHeight / 2, WHITE);
+			//DrawLine(screenWidth / 2, 0, screenWidth / 2, screenHeight, WHITE);
+			//Vector2 mousePos = GetMousePosition();
+			//DrawText(TextFormat("X: %f", mousePos.x), 0, 0, 50, WHITE);
+			//DrawText(TextFormat("Y: %f", mousePos.y), 0, 55, 50, WHITE);
+			// 809, 68
+			
+			DrawText("PONG!", screenWidth / 2 - 180, 90, 120, WHITE);
+			playButton.Draw();
+			quitButton.Draw();
+			DrawCircle(818 + 10, 61 + 10, 20, shadow);
+			DrawCircle(818, 61, 20, yellow);
+		}
+
+		else if (state == STATE_GAME || state == STATE_PAUSE)
+		{
+			DrawRectangle(screenWidth / 2, 0, screenWidth / 2, screenHeight, green);
+			DrawCircle(screenWidth / 2, screenHeight / 2, 150, lightGreen);
+			DrawLine(screenWidth / 2, 0, screenWidth / 2, screenHeight, WHITE);
+			DrawText(TextFormat("%i", cpuScore), screenWidth / 2 + 10, screenHeight / 2 - 40, 80, WHITE);
+			DrawText(TextFormat("%i", playerScore), screenWidth / 2 - 50, screenHeight / 2 - 40, 80, WHITE);
+			ball.Draw();
+			player.Draw();
+			cpu.Draw();
+
+			if (state == STATE_PAUSE)
+			{
+
+			}
+		}
 
 		EndDrawing();
 	}
