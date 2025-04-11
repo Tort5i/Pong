@@ -267,11 +267,14 @@ void restart(Ball &ball, Paddle &player, Paddle &cpu)
 	cpu.Reset(GetScreenWidth() - 35);
 }
 
-int main(int argc, char* argv[])
+int WinMain(int argc, char* argv[])
 {
 	const unsigned int screenWidth = 1280, screenHeight = 800;
+	Image icon = LoadImage("Images/Pong.png");
 
 	InitWindow(screenWidth, screenHeight, "Pong");
+	SetWindowIcon(icon);
+	UnloadImage(icon);
 	SetTargetFPS(60);
 	srand(time(0));
 	SetExitKey(KEY_NULL);
