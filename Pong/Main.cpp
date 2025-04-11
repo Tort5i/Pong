@@ -8,6 +8,7 @@ Color darkGreen = Color{ 20, 160, 133, 255 };
 Color lightGreen = Color{ 129, 204, 184, 255 };
 Color yellow = Color{ 243, 213, 91, 255 };
 Color shadow = Color{ 42, 42, 42, 100 };
+Color pauseShadow = Color{ 42, 42, 42, 175 };
 
 enum GameState
 {
@@ -153,6 +154,12 @@ public:
 		LimitMovement();
 	}
 
+	void Reset(int x)
+	{
+		Position.x = x;
+		Position.y = GetScreenHeight() / 2 - 120 / 2;
+	}
+
 	Vector2 GetPosition()
 	{
 		return Position;
@@ -211,11 +218,31 @@ public:
 		DrawText(text.c_str(), position.x + proportions.x / 2 - MeasureText(text.c_str(), 75) / 2, position.y + proportions.y / 2 - 75 / 2, 75, WHITE);
 	}
 
+	void Draw(Vector2 Offset)
+	{
+		(isHovered) ? DrawRectangle(position.x + Offset.x, position.y + Offset.y, proportions.x, proportions.y, regColour) : DrawRectangle(position.x + Offset.x, position.y + Offset.y, proportions.x, proportions.y, hoverColour);
+		DrawText(text.c_str(), position.x + proportions.x / 2 - MeasureText(text.c_str(), 75) / 2 + Offset.x, position.y + proportions.y / 2 - 75 / 2 + Offset.y, 75, WHITE);
+	}
+
 	void Update()
 	{
 		Vector2 mousePos = GetMousePosition();
 
 		if (CheckCollisionPointRec(mousePos, Rectangle{ position.x, position.y, proportions.x, proportions.y }))
+		{
+			isHovered = true;
+		}
+		else
+		{
+			isHovered = false;
+		}
+	}
+
+	void Update(Vector2 offset)
+	{
+		Vector2 mousePos = GetMousePosition();
+
+		if (CheckCollisionPointRec(mousePos, Rectangle{ position.x + offset.x, position.y + offset.y, proportions.x, proportions.y }))
 		{
 			isHovered = true;
 		}
@@ -231,6 +258,15 @@ public:
 	}
 };
 
+void restart(Ball &ball, Paddle &player, Paddle &cpu)
+{
+	playerScore = 0;
+	cpuScore = 0;
+	ball.Reset();
+	player.Reset(10);
+	cpu.Reset(GetScreenWidth() - 35);
+}
+
 int main(int argc, char* argv[])
 {
 	const unsigned int screenWidth = 1280, screenHeight = 800;
@@ -243,6 +279,7 @@ int main(int argc, char* argv[])
 	GameState state = STATE_MENU;
 
 	Button playButton = Button(Vector2{ screenWidth / 2 - 300 / 2, screenHeight / 2 - 125 / 2 }, Vector2{ 300, 125 }, "PLAY!", green, lightGreen);
+	Button restartButton = Button(Vector2{ screenWidth / 2 - 300 / 2, screenHeight / 2 - 125 / 2 + 150 }, Vector2{ 300, 125 }, "Restart", green, lightGreen);
 	Button quitButton = Button(Vector2{ screenWidth / 2 - 300 / 2, screenHeight / 2 - 125 / 2 + 150 }, Vector2{ 300, 125 }, "quit", green, lightGreen);
 
 	Ball ball = Ball(20);
@@ -279,6 +316,38 @@ int main(int argc, char* argv[])
 			{
 				ball.InvertSpeedX();
 			}
+
+			if (IsKeyPressed(KEY_ESCAPE))
+			{
+				state = STATE_PAUSE;
+			}
+		}
+
+		else if (state == STATE_PAUSE)
+		{
+			playButton.Update();
+			if (playButton.isMouseHovered() && IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+			{
+				state = STATE_GAME;
+			}
+
+			restartButton.Update();
+			if (restartButton.isMouseHovered() && IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+			{
+				restart(ball, player, cpu);
+				state = STATE_GAME;
+			}
+
+			quitButton.Update(Vector2{0, 150});
+			if (quitButton.isMouseHovered() && IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+			{
+				break;
+			}
+			
+			if (IsKeyPressed(KEY_ESCAPE))
+			{
+				state = STATE_GAME;
+			}
 		}
 		
 		BeginDrawing();
@@ -314,7 +383,13 @@ int main(int argc, char* argv[])
 
 			if (state == STATE_PAUSE)
 			{
-
+				DrawRectangle(0, 0, screenWidth, screenHeight, pauseShadow);
+				DrawText("PONG!", screenWidth / 2 - 180, 90, 120, WHITE);
+				DrawCircle(818 + 10, 61 + 10, 20, shadow);
+				DrawCircle(818, 61, 20, yellow);
+				playButton.Draw();
+				restartButton.Draw();
+				quitButton.Draw(Vector2{0, 150});
 			}
 		}
 
