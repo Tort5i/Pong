@@ -1,0 +1,22 @@
+﻿  Main.cpp
+C:\Users\dudle\source\repos\Pong\Pong\Main.cpp(30,33): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\dudle\source\repos\Pong\Pong\Main.cpp(31,34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\dudle\source\repos\Pong\Pong\Main.cpp(34,31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\dudle\source\repos\Pong\Pong\Main.cpp(35,31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\dudle\source\repos\Pong\Pong\Main.cpp(42,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\dudle\source\repos\Pong\Pong\Main.cpp(42,42): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\dudle\source\repos\Pong\Pong\Main.cpp(42,25): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\dudle\source\repos\Pong\Pong\Main.cpp(43,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\dudle\source\repos\Pong\Pong\Main.cpp(43,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\dudle\source\repos\Pong\Pong\Main.cpp(43,22): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\dudle\source\repos\Pong\Pong\Main.cpp(70,33): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\dudle\source\repos\Pong\Pong\Main.cpp(71,34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\dudle\source\repos\Pong\Pong\Main.cpp(75,31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\dudle\source\repos\Pong\Pong\Main.cpp(76,31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\dudle\source\repos\Pong\Pong\Main.cpp(136,84): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\dudle\source\repos\Pong\Pong\Main.cpp(137,29): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\dudle\source\repos\Pong\Pong\Main.cpp(192,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\dudle\source\repos\Pong\Pong\Main.cpp(202,32): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\dudle\source\repos\Pong\Pong\Main.cpp(204,65): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\dudle\source\repos\Pong\Pong\Main.cpp(208,70): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Pong.vcxproj -> C:\Users\dudle\source\repos\Pong\x64\Debug\Pong.exe
