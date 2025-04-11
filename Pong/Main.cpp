@@ -17,6 +17,8 @@ enum GameState
 	STATE_PAUSE,
 };
 
+Sound scoreSound, wallHitSound;
+
 class Ball
 {
 
@@ -55,16 +57,19 @@ public:
 		if (position.y + radius >= GetScreenHeight() || position.y - radius <= 0)
 		{
 			InvertSpeedY();
+			PlaySound(wallHitSound);
 		}
 		else if (position.x + radius >= GetScreenWidth())
 		{
 			Reset();
 			playerScore++;
+			PlaySound(scoreSound);
 		}
 		else if (position.x - radius <= 0)
 		{
 			Reset();
 			cpuScore++;
+			PlaySound(scoreSound);
 		}
 		
 	}
@@ -273,6 +278,7 @@ int WinMain(int argc, char* argv[])
 	Image icon = LoadImage("Images/Pong.png");
 
 	InitWindow(screenWidth, screenHeight, "Pong");
+	InitAudioDevice();
 	SetWindowIcon(icon);
 	UnloadImage(icon);
 	SetTargetFPS(60);
@@ -288,6 +294,10 @@ int WinMain(int argc, char* argv[])
 	Ball ball = Ball(20);
 	Paddle player = Paddle(10, screenHeight / 2 - 60);
 	CPUPaddle cpu = CPUPaddle(screenWidth - 35, screenHeight / 2 - 60);
+
+	Sound paddleHitSound = LoadSound("Sound/PaddleHit.wav");
+	wallHitSound = LoadSound("Sound/WallHit.wav");
+	scoreSound = LoadSound("Sound/Score.wav");
 
 	while (!WindowShouldClose())
 	{
@@ -314,10 +324,12 @@ int WinMain(int argc, char* argv[])
 			if (CheckCollisionCircleRec(ball.GetPosition(), ball.GetRadius(), Rectangle{ player.GetPosition().x, player.GetPosition().y, player.GetProportions().x, player.GetProportions().y }))
 			{
 				ball.InvertSpeedX();
+				PlaySound(paddleHitSound);
 			}
 			else if (CheckCollisionCircleRec(ball.GetPosition(), ball.GetRadius(), Rectangle{ cpu.GetPosition().x, cpu.GetPosition().y, cpu.GetProportions().x, cpu.GetProportions().y }))
 			{
 				ball.InvertSpeedX();
+				PlaySound(paddleHitSound);
 			}
 
 			if (IsKeyPressed(KEY_ESCAPE))
@@ -399,6 +411,7 @@ int WinMain(int argc, char* argv[])
 		EndDrawing();
 	}
 
+	CloseAudioDevice();
 	CloseWindow();
 	return 0;
 }

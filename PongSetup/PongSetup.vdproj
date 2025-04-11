@@ -87,6 +87,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_C34987EBDB35482BAE29437C4B8FED16"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_C37EDFA0003A422283ABAE316E090B9C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -99,6 +105,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_D809C3806C874790B2E387F33EAC02E0"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_DE417C1830F3B2A3CC6D85B365EE0854"
         "OwnerKey" = "8:_C37EDFA0003A422283ABAE316E090B9C"
         "MsmSig" = "8:_UNDEFINED"
@@ -106,6 +118,12 @@
         "Entry"
         {
         "MsmKey" = "8:_E6929D1186D34E6AB2CD9AA9B7073D2A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FD62E991AB084107B8FB4A350D485117"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -436,6 +454,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C34987EBDB35482BAE29437C4B8FED16"
+            {
+            "SourcePath" = "8:..\\Pong\\Sound\\WallHit.wav"
+            "TargetName" = "8:WallHit.wav"
+            "Tag" = "8:"
+            "Folder" = "8:_BC4C1D66BB6B42D8B21B89CB34EFF46B"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D419038B0444834269DB5A62685ECDAF"
             {
             "SourcePath" = "8:api-ms-win-crt-locale-l1-1-0.dll"
@@ -454,6 +492,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D809C3806C874790B2E387F33EAC02E0"
+            {
+            "SourcePath" = "8:..\\Pong\\Sound\\PaddleHit.wav"
+            "TargetName" = "8:PaddleHit.wav"
+            "Tag" = "8:"
+            "Folder" = "8:_BC4C1D66BB6B42D8B21B89CB34EFF46B"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DE417C1830F3B2A3CC6D85B365EE0854"
@@ -496,6 +554,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FD62E991AB084107B8FB4A350D485117"
+            {
+            "SourcePath" = "8:..\\Pong\\Sound\\Score.wav"
+            "TargetName" = "8:Score.wav"
+            "Tag" = "8:"
+            "Folder" = "8:_BC4C1D66BB6B42D8B21B89CB34EFF46B"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -515,7 +593,7 @@
             }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_AF37BBE8B9D04904822945D8DE67D804"
             {
-            "DefaultLocation" = "8:[ProgramFiles64Folder][Manufacturer]\\PongV1.0.0"
+            "DefaultLocation" = "8:[ProgramFiles64Folder][Manufacturer]\\Pong1.1.0"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -523,6 +601,17 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_BC4C1D66BB6B42D8B21B89CB34EFF46B"
+                    {
+                    "Name" = "8:Sound"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_3FA896C507154012A8DE760888ADD850"
+                        "Folders"
+                        {
+                        }
+                    }
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_F06DCF031D5D4503BC0983C3F3B7CC32"
                     {
                     "Name" = "8:Images"
@@ -562,16 +651,16 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:PongV1.0.1"
-        "ProductCode" = "8:{E6BC53D3-8E8C-40E4-8AF6-F368BB4AEABD}"
-        "PackageCode" = "8:{F13CD5E9-6550-451D-AAD8-77E7731FD2BA}"
+        "ProductName" = "8:Pong V1.1.0"
+        "ProductCode" = "8:{29864D4C-CC44-4A7A-A44E-15E9A96240D3}"
+        "PackageCode" = "8:{B41B397A-F70A-4E0F-A6A4-EACB4BC4F5F5}"
         "UpgradeCode" = "8:{2753D88F-12BF-43BE-AE9C-BAA2DB44CC21}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:1.1.0"
         "Manufacturer" = "8:Tort_i"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
